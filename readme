@@ -1,0 +1,33 @@
+Created small project management service
+
+Ideology as below
+Admin will be super user to manage entire system controls
+Business developer  will handle all projects
+Project Manager will handle all project updates
+User/developer will can read complete info (only read access)
+
+PS: i can extend the current implementation based on suggestion .. in interest of time implemented all basic functionalities
+
+Admin - Super user
+Can create/update/delete project
+Can create/update/delete user
+Can create/update/delete project management
+
+Business developer
+Can create/update/delete project
+Can create/update/delete project management
+
+Project Manager
+Can update project
+Can update management
+
+User
+All read access (GET API calls)
+
+Login
+
+For now login API exist without any special validation on user info like password (will implement JWT,OAUTH on demand)
+once user login his role would be stored in thread locale
+
+based on role of user API access would be restricted
+

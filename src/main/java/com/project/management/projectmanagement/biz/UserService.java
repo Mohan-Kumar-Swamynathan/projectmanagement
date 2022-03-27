@@ -63,4 +63,21 @@ public class UserService {
         return responseWrapper;
     }
 
+    public CommonResponseWrapper<User> login(long id) {
+        log.info("Getting user details " + id);
+        CommonResponseWrapper responseWrapper = new CommonResponseWrapper(HttpStatus.OK.value(),
+                HttpStatus.OK.getReasonPhrase());
+        Optional<User> user = null;
+        try {
+            user = userDAO.findById(id);
+            if (user.isPresent()) {
+
+                responseWrapper.setData(user);
+            }
+        } catch (Exception exception) {
+            responseWrapper = new CommonResponseWrapper(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
+        }
+        return responseWrapper;
+    }
 }
