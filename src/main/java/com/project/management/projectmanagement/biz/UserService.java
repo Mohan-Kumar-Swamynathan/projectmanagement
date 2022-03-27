@@ -35,7 +35,7 @@ public class UserService {
         return responseWrapper;
     }
 
-    public CommonResponseWrapper createUser(User user) {
+    public CommonResponseWrapper createOrUpdateUser(User user) {
         log.info("create/update user", user);
         CommonResponseWrapper responseWrapper = new CommonResponseWrapper(HttpStatus.OK.value(),
                 HttpStatus.OK.getReasonPhrase());
@@ -48,4 +48,19 @@ public class UserService {
         }
         return responseWrapper;
     }
+
+
+    public CommonResponseWrapper<User> deleteById(Long id) {
+        log.info("deleting user details " + id);
+        CommonResponseWrapper responseWrapper = new CommonResponseWrapper(HttpStatus.OK.value(),
+                HttpStatus.OK.getReasonPhrase());
+        try {
+            userDAO.deleteById(id);
+        } catch (Exception exception) {
+            responseWrapper = new CommonResponseWrapper(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
+        }
+        return responseWrapper;
+    }
+
 }

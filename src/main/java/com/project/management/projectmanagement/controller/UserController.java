@@ -20,13 +20,23 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public CommonResponseWrapper saveUser(@Validated @RequestBody User user) {
-        return userService.createUser(user);
+    public CommonResponseWrapper createUser(@Validated @RequestBody User user) {
+        return userService.createOrUpdateUser(user);
+    }
+
+    @PutMapping("/update")
+    public CommonResponseWrapper updateUser(@Validated @RequestBody User user) {
+        return userService.createOrUpdateUser(user);
     }
 
     @GetMapping("/{id}")
     public CommonResponseWrapper<User> getUser(@PathVariable(value = "id") long id) {
         return userService.fetchUserById(id);
+    }
+
+    @GetMapping("/delete/{id}")
+    public CommonResponseWrapper<User> deleteUser(@PathVariable(value = "id") long id) {
+        return userService.deleteById(id);
     }
 
 }
