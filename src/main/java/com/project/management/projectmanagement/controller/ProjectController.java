@@ -29,8 +29,12 @@ public class ProjectController {
 
     @PostMapping("/create")
     public CommonResponseWrapper createProject(@Validated @RequestBody ProjectDetails projectDetails) {
-        if (!userRoleValidatorBiz.isAdmin(UserThreadLocale.getUserRole()) ||
-                !userRoleValidatorBiz.isProjectManager(UserThreadLocale.getUserRole())) {
+        boolean isValidUser;
+        isValidUser = userRoleValidatorBiz.isAdmin(UserThreadLocale.getUserRole());
+        if (!isValidUser) {
+            isValidUser = userRoleValidatorBiz.isBusinessDeveloper(UserThreadLocale.getUserRole());
+        }
+        if (!isValidUser) {
             return new CommonResponseWrapper(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase());
         }
         return managerBiz.createOrUpdateProject(projectDetails);
@@ -39,7 +43,7 @@ public class ProjectController {
 
     @PutMapping("/update")
     public CommonResponseWrapper updateProject(@Validated @RequestBody ProjectDetails projectDetails) {
-        if (userRoleValidatorBiz.isDeveloper(UserThreadLocale.getUserRole())) {
+        if (!userRoleValidatorBiz.isProjectManager(UserThreadLocale.getUserRole())) {
             return new CommonResponseWrapper(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase());
         }
         return managerBiz.createOrUpdateProject(projectDetails);

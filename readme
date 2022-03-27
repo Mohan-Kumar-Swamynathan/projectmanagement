@@ -31,3 +31,82 @@ once user login his role would be stored in thread locale
 
 based on role of user API access would be restricted
 
+
+For now
+
+Projects will be created and assigned to team (team id ) by bussiness developer and project manager will co-ordinate and track the progress
+
+and hence in tracking details project details along with devlopers who are involved in the project will be show in the tracker
+
+
+sample tracking info
+
+// 20220328042648
+// http://localhost:8080/api/project/management/track/2
+
+{
+  "code": 200,
+  "message": "OK",
+  "data": {
+    "projectStatus": "ACTIVE",
+    "startTime": "2022-03-27T13:02:03.000+00:00",
+    "completionTime": "2022-04-27T21:23:55.000+00:00",
+    "projectDetails": {
+      "id": 2,
+      "name": "CKYC Integeration",
+      "teamId": 1,
+      "startTime": 1648386123000,
+      "completeTime": 1651094635000,
+      "projectRequirements": "Need to integerate CKYC for Lending process"
+    },
+    "developers": [
+      {
+        "id": 5,
+        "name": "developer 1",
+        "teamId": 1,
+        "deviceEmail": "developer1@gmail.com",
+        "phone": "7622252342",
+        "userStatus": 1,
+        "userRole": 4,
+        "createTime": 1648386123000
+      },
+      {
+        "id": 6,
+        "name": "developer 2",
+        "teamId": 1,
+        "deviceEmail": "developer2@gmail.com",
+        "phone": "7622252332",
+        "userStatus": 1,
+        "userRole": 4,
+        "createTime": 1648386123000
+      },
+      {
+        "id": 7,
+        "name": "developer 3",
+        "teamId": 1,
+        "deviceEmail": "developer3@gmail.com",
+        "phone": "7522252332",
+        "userStatus": 1,
+        "userRole": 4,
+        "createTime": 1648386123000
+      },
+      {
+        "id": 10,
+        "name": "new developer",
+        "teamId": 1,
+        "deviceEmail": "new developer@gmail.com",
+        "phone": "7922252332",
+        "userStatus": 1,
+        "userRole": 4,
+        "createTime": 1648386123000
+      }
+    ],
+    "projectManager": {
+      "id": 9,
+      "teamId": 1,
+      "projectId": 2,
+      "projectStatus": 1
+    }
+  }
+}
+
