@@ -1,5 +1,6 @@
 Created small project management service
 
+
 Ideology as below
 Admin will be super user to manage entire system controls
 Business developer  will handle all projects
@@ -7,6 +8,7 @@ Project Manager will handle all project updates
 User/developer will can read complete info (only read access)
 
 PS: i can extend the current implementation based on suggestion .. in interest of time implemented all basic functionalities
+User id needs to be passed in every request - user id can be fetched while login from login API and based on user id roles would be decided 
 
 Admin - Super user
 Can create/update/delete project
@@ -37,6 +39,8 @@ For now
 Projects will be created and assigned to team (team id ) by bussiness developer and project manager will co-ordinate and track the progress
 
 and hence in tracking details project details along with devlopers who are involved in the project will be show in the tracker
+
+
 
 Attached scrrenshot for reference *** 
 
